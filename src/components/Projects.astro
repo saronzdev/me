@@ -3,31 +3,20 @@ import SectionHeading from './SectionHeading.astro';
 import ProjectCard from './ProjectCard.astro';
 import { projects } from '../data/projects';
 import { site } from '../data/site';
-
-const featured = projects.find((project) => project.featured) ?? projects[0];
-const rest = projects.filter((project) => project !== featured);
 ---
 
 <section class="section" id="projects">
   <SectionHeading index="03" title="Projects" />
 
-  {
-    featured && (
-      <div class="projects__featured">
-        <ProjectCard project={featured} />
-      </div>
-    )
-  }
-
   <div class="projects__grid">
-    {rest.map((project) => <ProjectCard project={project} />)}
-
-    <a class="projects__more" href="https://github.com/saronzdev" target="_blank" rel="noopener noreferrer">
-      <span class="projects__more-title">More on GitHub</span>
-      <span class="projects__more-text">Experiments, CLI tools and open source projects.</span>
-      <span class="projects__more-arrow" aria-hidden="true">↗</span>
-    </a>
+    {projects.map((project) => <ProjectCard project={project} />)}
   </div>
+
+  <a class="projects__more" href="https://github.com/saronzdev" target="_blank" rel="noopener noreferrer">
+    <span class="projects__more-title">More on GitHub</span>
+    <span class="projects__more-text">Experiments, CLI tools and open source projects.</span>
+    <span class="projects__more-arrow" aria-hidden="true">↗</span>
+  </a>
 
   <p class="projects__note">
     Want the code behind these? Everything lives on
@@ -36,10 +25,6 @@ const rest = projects.filter((project) => project !== featured);
 </section>
 
 <style>
-  .projects__featured {
-    margin-bottom: 44px;
-  }
-
   .projects__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -48,35 +33,36 @@ const rest = projects.filter((project) => project !== featured);
 
   .projects__more {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-    min-height: 180px;
-    padding: 20px 22px;
+    align-items: center;
+    gap: 12px;
+    margin-top: 44px;
+    padding: 16px 20px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
   }
 
   .projects__more:hover {
     border-color: var(--accent);
-    transform: translateY(-2px);
+    background: var(--bg-soft);
   }
 
   .projects__more-title {
-    font-size: 16.5px;
+    font-size: 15px;
     font-weight: 600;
     letter-spacing: -0.015em;
+    white-space: nowrap;
   }
 
   .projects__more-text {
-    font-size: 14.5px;
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
     color: var(--muted);
-    max-width: 30ch;
   }
 
   .projects__more-arrow {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--accent);
     transition: transform 0.2s ease;
   }
@@ -86,7 +72,7 @@ const rest = projects.filter((project) => project !== featured);
   }
 
   .projects__note {
-    margin-top: 36px;
+    margin-top: 24px;
     font-size: 14px;
     color: var(--muted);
   }
@@ -106,6 +92,16 @@ const rest = projects.filter((project) => project !== featured);
     .projects__grid {
       grid-template-columns: 1fr;
       gap: 36px;
+    }
+
+    .projects__more {
+      flex-wrap: wrap;
+      gap: 4px 12px;
+    }
+
+    .projects__more-text {
+      flex-basis: 100%;
+      order: 3;
     }
   }
 </style>

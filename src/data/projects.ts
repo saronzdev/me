@@ -11,7 +11,6 @@ export interface Project {
   description: string;
   stack: string[];
   links: ProjectLink[];
-  featured?: boolean;
   coverTone: string;
   coverToneMid?: string;
   coverToneTo: string;
@@ -23,7 +22,6 @@ export const projects: Project[] = [
     name: 'Frank Joyería',
     status: 'Live',
     year: '2026',
-    featured: true,
     description:
       'Full e-commerce platform for a jewelry store in Cuba: dynamic catalog, admin dashboard with product CRUD and image uploads, WhatsApp reservations, and a PWA frontend backed by its own REST API.',
     stack: ['Preact', 'TypeScript', 'Express', 'Turso', 'Redis', 'Vitest'],

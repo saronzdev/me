@@ -12,7 +12,7 @@ const coverBackground = project.coverToneMid
   : `linear-gradient(140deg, ${project.coverTone} 0%, ${project.coverToneTo} 100%)`;
 ---
 
-<article class:list={['project', { 'project--featured': project.featured }]} data-reveal>
+<article class="project" data-reveal>
   <figure class="project__cover project__cover--tone" style={`background:${coverBackground}`}>
     <span class="project__monogram" aria-hidden="true">
       {project.name.slice(0, 1)}
@@ -58,7 +58,7 @@ const coverBackground = project.coverToneMid
   .project__cover {
     position: relative;
     margin: 0;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid transparent;
@@ -69,20 +69,8 @@ const coverBackground = project.coverToneMid
     place-items: center;
   }
 
-  .project--featured .project__cover {
-    aspect-ratio: 2 / 1;
-  }
-
-  .project--featured .project__name {
-    font-size: 19px;
-  }
-
-  .project--featured .project__description {
-    font-size: 15.5px;
-  }
-
   .project__monogram {
-    font-size: clamp(48px, 10vw, 84px);
+    font-size: clamp(40px, 7vw, 64px);
     font-weight: 600;
     letter-spacing: -0.04em;
     color: rgb(255 255 255 / 72%);

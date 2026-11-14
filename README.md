@@ -27,7 +27,7 @@ fonts, no tracking. Dark mode included, with a light/dark toggle and a system pr
 
 ```text
 src/
-├── assets/             # hero illustration (light and dark variants)
+├── assets/            # brand mark used in the hero
 ├── components/        # Header, Hero, About, Stack, Projects, Experience, Contact, Footer
 ├── data/              # Typed content: site, stack, projects, experience
 ├── layouts/           # BaseLayout: SEO, JSON-LD, theme bootstrap
@@ -45,7 +45,7 @@ Everything you will want to change lives in `src/data/`:
 | :--------------------- | :--------------------------------------------------------- |
 | `src/data/site.ts`     | Name, role, location, availability, email, socials, copy    |
 | `src/data/stack.ts`    | Stack cards and the "also working with" list                |
-| `src/data/projects.ts` | Projects, their stack, links and cover images               |
+| `src/data/projects.ts` | Projects, their stack, links and cover gradients            |
 | `src/data/experience.ts` | Experience and education entries                          |
 
 ## Before deploying

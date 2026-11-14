@@ -217,6 +217,13 @@ button {
   top: 0;
 }
 
+/* real anchor at the very top of the document: the sticky header can never be
+   the target of a fragment navigation, so "back to top" needs its own node */
+.top-anchor {
+  display: block;
+  height: 0;
+}
+
 /* ---------- reveal on scroll (progressive enhancement) ---------- */
 
 @media (prefers-reduced-motion: no-preference) {

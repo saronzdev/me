@@ -1,6 +1,5 @@
 ---
-import heroLight from '../assets/hero-light.jpg';
-import heroDark from '../assets/hero-dark.jpg';
+import brand from '../assets/brand.png';
 import { hero, site } from '../data/site';
 ---
 
@@ -26,12 +25,8 @@ import { hero, site } from '../data/site';
       </div>
     </div>
 
-    <figure
-      class="hero__art"
-      data-reveal
-      style={`--delay: 140ms;--art-light:url(${heroLight.src});--art-dark:url(${heroDark.src})`}
-      aria-hidden="true"
-    >
+    <figure class="hero__art" data-reveal style="--delay: 140ms">
+      <img src={brand.src} width={brand.width} height={brand.height} alt="" />
     </figure>
   </div>
 
@@ -126,20 +121,17 @@ import { hero, site } from '../data/site';
 
   .hero__art {
     grid-area: art;
-    aspect-ratio: 1 / 1;
     margin: 0;
     border: 1px solid var(--line);
     border-radius: 20px;
     overflow: hidden;
-    background-color: var(--bg-soft);
-    background-image: var(--art-light);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #0a0a0c;
   }
 
-  :global(:root[data-theme='dark']) .hero__art {
-    background-image: var(--art-dark);
+  .hero__art img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .hero__meta {

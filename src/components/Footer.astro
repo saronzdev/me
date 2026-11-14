@@ -8,9 +8,20 @@ const year = new Date().getFullYear();
   <div class="footer__inner wrap">
     <span>© {year} {site.name}</span>
     <span class="footer__meta">Built with Astro</span>
-    <a href="#top">Back to top ↑</a>
+    <a href="#top" data-to-top>Back to top ↑</a>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-to-top]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      history.replaceState(null, '', '#top');
+    });
+  });
+</script>
 
 <style>
   .footer {
