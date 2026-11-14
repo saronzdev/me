@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # design reference, not part of the site
 example.html
+
+# unoptimized source artwork (the site ships the compressed versions in src/assets)
+src/assets/source/

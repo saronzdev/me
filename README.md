@@ -27,6 +27,7 @@ fonts, no tracking. Dark mode included, with a light/dark toggle and a system pr
 
 ```text
 src/
+├── assets/             # hero illustration (light and dark variants)
 ├── components/        # Header, Hero, About, Stack, Projects, Experience, Contact, Footer
 ├── data/              # Typed content: site, stack, projects, experience
 ├── layouts/           # BaseLayout: SEO, JSON-LD, theme bootstrap
