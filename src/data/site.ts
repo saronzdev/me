@@ -38,6 +38,7 @@ export const about = {
   currently: [
     'Third-year Computer Engineering student at Universidad Camilo Cienfuegos.',
     'Building Frank Joyería, an e-commerce platform for a jewelry store in Cuba.',
+    'Building Topikgram, a social network with topic-tagged posts and a personalized feed.',
     'Open to freelance projects and collaborations.',
   ],
 } as const;

@@ -13,6 +13,7 @@ export interface Project {
   links: ProjectLink[];
   featured?: boolean;
   coverTone: string;
+  coverToneMid?: string;
   coverToneTo: string;
 }
 
@@ -35,18 +36,19 @@ export const projects: Project[] = [
     coverToneTo: '#17171a',
   },
   {
-    slug: 'bird',
-    name: 'Bird',
-    status: 'Open source',
-    year: '2024',
+    slug: 'topikgram',
+    name: 'Topikgram',
+    status: 'Live',
+    year: '2026',
     description:
-      'A social network inspired by X, built as two independent apps: a React frontend and an Express/MongoDB API with JWT authentication.',
-    stack: ['React', 'JavaScript', 'Express', 'MongoDB', 'Tailwind CSS'],
+      'Social network with posts tagged by topics (1–3 topics), a personalized feed, likes, saves, threaded comments, follows, and an interest-weighting system that tunes the feed to each user.',
+    stack: ['Go', 'PostgreSQL', 'JWT', 'Preact', 'TypeScript', 'Vite'],
     links: [
-      { label: 'Frontend', href: 'https://github.com/saronzdev/bird' },
-      { label: 'Backend', href: 'https://github.com/saronzdev/bird-api' },
+      { label: 'Live site', href: 'https://topikgram.vercel.app' },
+      { label: 'Code', href: 'https://github.com/saronzdev/topikgram' },
     ],
-    coverTone: '#8fb0ff',
-    coverToneTo: '#26325c',
+    coverTone: '#ec4899',
+    coverToneMid: '#863bff',
+    coverToneTo: '#1c1917',
   },
 ];
