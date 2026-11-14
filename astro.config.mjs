@@ -1,8 +1,13 @@
 import { defineConfig } from 'astro/config';
 
-// TODO: replace `https://example.com` with your production domain.
-// It feeds the canonical link, Open Graph URLs, robots.txt and sitemap.xml.
+// Published as a GitHub Pages project site:
+//   https://saronzdev.github.io/saronzdev/
+//
+// `site` is the origin (used for canonical URLs, Open Graph, robots.txt and
+// sitemap.xml) and `base` is the repository path. If you move to a custom
+// domain, set `site` to it and remove `base`.
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://saronzdev.github.io',
+  base: '/saronzdev',
   trailingSlash: 'never',
 });

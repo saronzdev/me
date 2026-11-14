@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { asset } from '../lib/paths';
 import { site } from '../data/site';
 
 export interface Props {
@@ -12,13 +13,15 @@ export interface Props {
 const {
   title = site.title,
   description = site.description,
-  image = '/og.png',
+  image = 'og.png',
   noindex = false,
 } = Astro.props;
 
-const origin = Astro.site ?? new URL('https://example.com');
+// The site is served from a subpath on GitHub Pages, so every public asset has
+// to go through the base path instead of being hardcoded as '/'.
+const origin = Astro.site ?? new URL('https://saronzdev.github.io');
 const canonical = new URL(Astro.url.pathname, origin);
-const ogImage = new URL(image, origin);
+const ogImage = /^https?:/.test(image) ? new URL(image) : new URL(asset(image), origin);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -79,9 +82,9 @@ const jsonLd = {
     <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0e0e0d" media="(prefers-color-scheme: dark)" />
 
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href={asset('favicon.png')} />
+    <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
+    <link rel="manifest" href={asset('site.webmanifest')} />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

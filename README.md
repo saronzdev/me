@@ -35,6 +35,7 @@ src/
 ├── scripts/           # reveal.ts (scroll reveal helper)
 └── styles/            # global.css (tokens, reset, utilities)
 public/                # favicon, OG image and manifest
+.github/workflows/     # deploy.yml (build + GitHub Pages)
 ```
 
 ## Editing the content
@@ -48,12 +49,28 @@ Everything you will want to change lives in `src/data/`:
 | `src/data/projects.ts` | Projects, their stack, links and cover gradients            |
 | `src/data/experience.ts` | Experience and education entries                          |
 
-## Before deploying
+## Deployment
 
-1. Set your domain in `astro.config.mjs` (`site: 'https://your-domain.com'`). It feeds the
-   canonical link, Open Graph URLs, `robots.txt` and `sitemap.xml`.
-2. Replace `public/og.png` if you want a different social preview image (1200×630).
-3. Deploy the `dist/` folder to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages).
+The site is published to GitHub Pages as a **project site**:
+
+**https://saronzdev.github.io/saronzdev/**
+
+- `astro.config.mjs` sets `site: 'https://saronzdev.github.io'` and `base: '/saronzdev'`
+  (the `base` must match the repository name).
+- Every public asset is resolved through `import.meta.env.BASE_URL` instead of a
+  hardcoded `/`, so the subpath works.
+- `.github/workflows/deploy.yml` builds the site on every push to `main` and deploys
+  `dist/` through the official Pages actions. Pages must be set to
+  **Settings → Pages → Source: GitHub Actions**.
+- `src/pages/404.html` is picked up automatically by GitHub Pages as the error page.
+
+If you move to a custom domain, set `site` to the domain, drop `base`, and add the
+domain in **Settings → Pages → Custom domain**.
+
+## License
+
+Released under the [GNU General Public License v3.0](LICENSE) only.
+Copyright © 2026 Ronald Sardiñas González.
 
 ## Notes
 

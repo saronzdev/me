@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "private": true,
   "description": "Personal portfolio of Ronald Sardiñas González (saronzdev), Full Stack Developer.",
+  "license": "GPL-3.0-only",
+  "packageManager": "pnpm@12.18.0",
   "engines": {
     "node": ">=22.12.0"
   },

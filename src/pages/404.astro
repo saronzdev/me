@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { basePath } from '../lib/paths';
 ---
 
 <BaseLayout title="404 — Page not found" description="This page does not exist." noindex>
@@ -10,7 +11,7 @@ import Footer from '../components/Footer.astro';
     <p class="notfound__code">404</p>
     <h1 class="notfound__title">This page doesn’t exist.</h1>
     <p class="notfound__text">The link may be broken, or the page was moved somewhere else.</p>
-    <a class="btn btn--primary" href="/">Back home</a>
+    <a class="btn btn--primary" href={basePath}>Back home</a>
   </main>
   <Footer />
 </BaseLayout>
