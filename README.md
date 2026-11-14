@@ -53,9 +53,9 @@ Everything you will want to change lives in `src/data/`:
 
 The site is published to GitHub Pages as a **project site**:
 
-**https://saronzdev.github.io/saronzdev/**
+**https://saronzdev.github.io/me/**
 
-- `astro.config.mjs` sets `site: 'https://saronzdev.github.io'` and `base: '/saronzdev'`
+- `astro.config.mjs` sets `site: 'https://saronzdev.github.io'` and `base: '/me'`
   (the `base` must match the repository name).
 - Every public asset is resolved through `import.meta.env.BASE_URL` instead of a
   hardcoded `/`, so the subpath works.

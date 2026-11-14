@@ -1,6 +1,6 @@
-// The site is deployed to a subpath on GitHub Pages (`/saronzdev`), so absolute
+// The site is deployed to a subpath on GitHub Pages (`/me`), so absolute
 // URLs cannot be hardcoded. `import.meta.env.BASE_URL` is the configured base,
-// but it has no trailing slash here, which would produce `/saronzdevog.png`.
+// but it has no trailing slash here, which would produce `/meog.png`.
 
 /** The configured base with a guaranteed trailing slash (`/` at the site root). */
 export const basePath = import.meta.env.BASE_URL.endsWith('/')
