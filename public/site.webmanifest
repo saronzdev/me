@@ -1,0 +1,21 @@
+{
+  "name": "Ronald Sardiñas González — Full Stack Developer",
+  "short_name": "saronzdev",
+  "description": "Personal portfolio of Ronald Sardiñas González, Full Stack Developer based in Matanzas, Cuba.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafaf8",
+  "theme_color": "#17171a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

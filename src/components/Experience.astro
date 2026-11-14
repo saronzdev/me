@@ -1,0 +1,96 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { experience } from '../data/experience';
+---
+
+<section class="section" id="experience">
+  <SectionHeading index="04" title="Experience & Education" />
+
+  <ol class="timeline" data-reveal>
+    {
+      experience.map((item) => (
+        <li class="timeline__item">
+          <span class="timeline__marker" aria-hidden="true" />
+          <div class="timeline__content">
+            <div class="timeline__head">
+              <h3 class="timeline__role">{item.role}</h3>
+              <span class="timeline__period">{item.period}</span>
+            </div>
+            <p class="timeline__org">{item.org}</p>
+            <p class="timeline__description">{item.description}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 26px;
+    max-width: 46rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .timeline__item {
+    position: relative;
+  }
+
+  .timeline__item + .timeline__item {
+    margin-top: 32px;
+  }
+
+  .timeline__marker {
+    position: absolute;
+    left: -26px;
+    top: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 99px;
+    background: var(--accent-bright);
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+
+  .timeline__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .timeline__role {
+    font-size: 16.5px;
+    letter-spacing: -0.015em;
+  }
+
+  .timeline__period {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .timeline__org {
+    font-size: 14px;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+
+  .timeline__description {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 8px;
+    max-width: 58ch;
+  }
+</style>

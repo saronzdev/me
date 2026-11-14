@@ -1,0 +1,138 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import { site } from '../data/site';
+
+const nav = [
+  { href: '#about', label: 'About' },
+  { href: '#stack', label: 'Stack' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="header" id="top">
+  <div class="header__inner wrap">
+    <a class="header__brand" href="#top">
+      <span class="header__name">{site.shortName}</span>
+      <span class="header__alias">{site.alias}</span>
+    </a>
+
+    <nav class="header__nav" aria-label="Main">
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} data-nav-link data-optional={item.href !== '#projects' && item.href !== '#contact' ? '' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <ThemeToggle />
+  </div>
+</header>
+
+<script>
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]'));
+  const sections = links
+    .map((link) => document.querySelector<HTMLElement>(link.getAttribute('href') ?? ''))
+    .filter((section): section is HTMLElement => section !== null);
+
+  if (sections.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          links.forEach((link) => {
+            const isCurrent = link.getAttribute('href') === `#${entry.target.id}`;
+            if (isCurrent) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+          });
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: var(--header-h);
+  }
+
+  .header__brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .header__alias {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .header__nav ul {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .header__nav a {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 99px;
+    font-size: 14px;
+    color: var(--muted);
+    transition: color 0.18s ease, background-color 0.18s ease;
+  }
+
+  .header__nav a:hover {
+    color: var(--fg);
+  }
+
+  .header__nav a[aria-current='true'] {
+    color: var(--fg);
+    background: var(--bg-soft);
+  }
+
+  @media (max-width: 700px) {
+    .header__alias {
+      display: none;
+    }
+
+    .header__nav a[data-optional] {
+      display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .header__name {
+      font-size: 14px;
+    }
+  }
+</style>

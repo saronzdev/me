@@ -1,0 +1,133 @@
+---
+import { hero, site } from '../data/site';
+---
+
+<section class="hero">
+  <p class="hero__badge" data-reveal>
+    <span class="hero__dot" aria-hidden="true"></span>
+    {site.availability}
+  </p>
+
+  <h1 class="hero__title" data-reveal style="--delay: 60ms">
+    {hero.headline}
+  </h1>
+
+  <p class="hero__lede" data-reveal style="--delay: 120ms">
+    {hero.lede}
+  </p>
+
+  <div class="hero__actions" data-reveal style="--delay: 180ms">
+    <a class="btn btn--primary" href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+    <a class="btn btn--ghost" href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>
+  </div>
+
+  <dl class="hero__meta" data-reveal style="--delay: 240ms">
+    <div>
+      <dt>Based in</dt>
+      <dd>{site.location}</dd>
+    </div>
+    <div>
+      <dt>Timezone</dt>
+      <dd>{site.timezone}</dd>
+    </div>
+    <div>
+      <dt>Status</dt>
+      <dd>{site.availability}</dd>
+    </div>
+  </dl>
+</section>
+
+<style>
+  .hero {
+    padding: 15vh 0 12vh;
+  }
+
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+
+  .hero__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 99px;
+    background: var(--accent-bright);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-bright) 22%, transparent);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__dot {
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.35;
+      }
+    }
+  }
+
+  .hero__title {
+    font-size: clamp(32px, 7vw, 54px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    max-width: 15ch;
+  }
+
+  .hero__lede {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 46ch;
+    margin: 20px 0 34px;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .hero__meta dt {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .hero__meta dd {
+    font-size: 14px;
+    color: var(--fg);
+  }
+
+  @media (max-width: 560px) {
+    .hero {
+      padding: 12vh 0 10vh;
+    }
+
+    .hero__meta {
+      gap: 20px 28px;
+      margin-top: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { site } from '../data/site';
+---
+
+<section class="section contact" id="contact">
+  <SectionHeading index="05" title="Contact" />
+
+  <div class="contact__inner" data-reveal>
+    <h2 class="contact__title">Let’s build something.</h2>
+    <p class="contact__text">
+      I’m available for freelance projects and open to collaborations. The fastest way to reach me is email.
+    </p>
+
+    <div class="contact__actions">
+      <a class="btn btn--primary" href={`mailto:${site.email}`}>{site.email}</a>
+      <button class="btn btn--ghost" type="button" data-copy-email={site.email} data-copy-label>
+        Copy email
+      </button>
+    </div>
+
+    <p class="visually-hidden" aria-live="polite" data-copy-status></p>
+
+    <ul class="contact__socials">
+      {
+        site.socials.map((social) => (
+          <li>
+            <a href={social.href} target="_blank" rel="noopener noreferrer">
+              <span class="contact__social-name">{social.label}</span>
+              <span class="contact__social-handle">{social.handle}</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-copy-email]');
+  const status = document.querySelector<HTMLElement>('[data-copy-status]');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const value = button.dataset.copyEmail;
+      const label = button.querySelector<HTMLElement>('[data-copy-label]');
+      if (!value) return;
+
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch (error) {
+        if (status) status.textContent = 'Copy failed, select the email manually.';
+        return;
+      }
+
+      if (label) label.textContent = 'Copied';
+      if (status) status.textContent = `${value} copied to clipboard.`;
+
+      window.setTimeout(() => {
+        if (label) label.textContent = 'Copy email';
+      }, 2000);
+    });
+  });
+</script>
+
+<style>
+  .contact {
+    padding-bottom: 12vh;
+  }
+
+  .contact__inner {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 40px;
+    background: var(--bg-soft);
+  }
+
+  .contact__title {
+    font-size: clamp(26px, 5vw, 40px);
+    letter-spacing: -0.03em;
+  }
+
+  .contact__text {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 52ch;
+    margin: 14px 0 28px;
+  }
+
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .contact__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .contact__socials a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--muted);
+    transition: color 0.18s ease;
+  }
+
+  .contact__socials a:hover {
+    color: var(--fg);
+  }
+
+  .contact__social-name {
+    font-weight: 500;
+    color: var(--fg);
+  }
+
+  .contact__social-handle {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+  }
+
+  @media (max-width: 560px) {
+    .contact__inner {
+      padding: 28px 22px;
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { about } from '../data/site';
+---
+
+<section class="section" id="about">
+  <SectionHeading index="01" title="About" />
+
+  <div class="about">
+    <div class="about__text" data-reveal>
+      {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+
+    <aside class="about__card" data-reveal style="--delay: 90ms">
+      <h3 class="about__card-title">Currently</h3>
+      <ul>
+        {about.currently.map((item) => <li>{item}</li>)}
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about__text p {
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--fg-soft);
+  }
+
+  .about__text p + p {
+    margin-top: 18px;
+  }
+
+  .about__card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    background: var(--bg-soft);
+  }
+
+  .about__card-title {
+    font-size: 12px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .about__card li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14.5px;
+    color: var(--fg-soft);
+  }
+
+  .about__card li + li {
+    margin-top: 10px;
+  }
+
+  .about__card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 99px;
+    background: var(--accent-bright);
+  }
+
+  @media (max-width: 720px) {
+    .about {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

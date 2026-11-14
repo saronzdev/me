@@ -1,0 +1,37 @@
+---
+interface Props {
+  index: string;
+  title: string;
+}
+
+const { index, title } = Astro.props;
+---
+
+<h2 class="section-heading" data-reveal>
+  <span class="section-heading__index" aria-hidden="true">{index}</span>
+  <span class="section-heading__title">{title}</span>
+</h2>
+
+<style>
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted);
+  }
+
+  .section-heading__index {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+  }
+
+  .section-heading__title {
+    color: var(--muted);
+  }
+</style>

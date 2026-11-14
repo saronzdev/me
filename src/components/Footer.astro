@@ -1,0 +1,50 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__inner wrap">
+    <span>© {year} {site.name}</span>
+    <span class="footer__meta">Built with Astro</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 26px;
+    padding-bottom: 30px;
+  }
+
+  .footer__meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+  }
+
+  .footer a {
+    transition: color 0.18s ease;
+  }
+
+  .footer a:hover {
+    color: var(--fg);
+  }
+
+  @media (max-width: 560px) {
+    .footer__inner {
+      justify-content: flex-start;
+    }
+  }
+</style>
