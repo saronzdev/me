@@ -12,13 +12,8 @@ export interface Project {
   stack: string[];
   links: ProjectLink[];
   featured?: boolean;
-  cover?: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-  coverTone?: string;
+  coverTone: string;
+  coverToneTo: string;
 }
 
 export const projects: Project[] = [
@@ -36,12 +31,8 @@ export const projects: Project[] = [
       { label: 'Frontend', href: 'https://github.com/saronzdev/frankjw' },
       { label: 'Backend', href: 'https://github.com/saronzdev/frankjw-api' },
     ],
-    cover: {
-      src: '/images/projects/frank-joyeria.jpg',
-      alt: 'Frank Joyería storefront showing a collection of gold jewelry',
-      width: 1200,
-      height: 630,
-    },
+    coverTone: '#c6a15b',
+    coverToneTo: '#17171a',
   },
   {
     slug: 'bird',
@@ -56,5 +47,6 @@ export const projects: Project[] = [
       { label: 'Backend', href: 'https://github.com/saronzdev/bird-api' },
     ],
     coverTone: '#8fb0ff',
+    coverToneTo: '#26325c',
   },
 ];

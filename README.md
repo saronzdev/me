@@ -33,7 +33,7 @@ src/
 ├── pages/             # index.astro, 404.astro, robots.txt.ts, sitemap.xml.ts
 ├── scripts/           # reveal.ts (scroll reveal helper)
 └── styles/            # global.css (tokens, reset, utilities)
-public/                # favicon, OG image, manifest, project imagery
+public/                # favicon, OG image and manifest
 ```
 
 ## Editing the content

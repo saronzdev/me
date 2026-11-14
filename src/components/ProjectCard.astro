@@ -9,26 +9,14 @@ const { project } = Astro.props;
 ---
 
 <article class:list={['project', { 'project--featured': project.featured }]} data-reveal>
-  {
-    project.cover ? (
-      <figure class="project__cover">
-        <img
-          src={project.cover.src}
-          alt={project.cover.alt}
-          width={project.cover.width}
-          height={project.cover.height}
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-    ) : (
-      <figure class="project__cover project__cover--tone" style={`--tone:${project.coverTone}`}>
-        <span class="project__monogram" aria-hidden="true">
-          {project.name.slice(0, 1)}
-        </span>
-      </figure>
-    )
-  }
+  <figure
+    class="project__cover project__cover--tone"
+    style={`--tone:${project.coverTone};--tone-to:${project.coverToneTo}`}
+  >
+    <span class="project__monogram" aria-hidden="true">
+      {project.name.slice(0, 1)}
+    </span>
+  </figure>
 
   <div class="project__body">
     <p class="project__meta">
@@ -72,30 +60,17 @@ const { project } = Astro.props;
     aspect-ratio: 4 / 3;
     border-radius: var(--radius);
     overflow: hidden;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-  }
-
-  .project__cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
-  }
-
-  .project:hover .project__cover img {
-    transform: scale(1.035);
+    border: 1px solid transparent;
   }
 
   .project__cover--tone {
     display: grid;
     place-items: center;
-    background: linear-gradient(140deg, var(--tone), color-mix(in srgb, var(--tone) 55%, #0e0e0d));
-    border-color: transparent;
+    background: linear-gradient(140deg, var(--tone) 0%, var(--tone-to) 100%);
   }
 
   .project--featured .project__cover {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 2 / 1;
   }
 
   .project--featured .project__name {
@@ -107,11 +82,16 @@ const { project } = Astro.props;
   }
 
   .project__monogram {
-    font-size: clamp(56px, 12vw, 96px);
+    font-size: clamp(48px, 10vw, 84px);
     font-weight: 600;
     letter-spacing: -0.04em;
-    color: rgb(255 255 255 / 78%);
+    color: rgb(255 255 255 / 72%);
     mix-blend-mode: soft-light;
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  .project:hover .project__monogram {
+    transform: scale(1.06);
   }
 
   .project__meta {
